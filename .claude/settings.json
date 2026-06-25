@@ -1,0 +1,36 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '--- current learning state (ai/memory/state.json) ---'; cat ai/memory/state.json 2>/dev/null || echo 'no state.json yet'"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd project && ./gradlew spotlessApply -q 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(bash scripts/sync-claude.sh:*)",
+      "Bash(./scripts/sync-claude.sh:*)"
+    ],
+    "deny": ["Bash(rm -rf:*)"]
+  }
+}

@@ -1,0 +1,30 @@
+# Build output
+target/
+build/
+*.class
+
+# Gradle / Maven
+.gradle/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env / secrets — never commit these
+.env
+*.env
+!.env.example
+
+# Claude Code — personal/local settings only (the rest of .claude/ IS committed)
+.claude/settings.local.json
+
+# Logs
+*.log
