@@ -15,3 +15,9 @@ The full operating manual is `ai/conventions.md` — read it and follow it befor
 
 Edit persona content in `ai/personas/`, then run `/sync` (or `scripts/sync-claude.sh`)
 to regenerate `.claude/agents/`. Never edit `.claude/agents/` directly — it's generated.
+
+## Committing
+
+- Follow the commit conventions in `ai/standards/git.md` (Conventional Commits,
+  one logical change per commit).
+- Do NOT add a `Co-Authored-By` trailer or any AI/Claude attribution to commit messages.
