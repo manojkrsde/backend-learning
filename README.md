@@ -77,7 +77,7 @@ That closed loop — score, decay, re-surface, rebuild — is the part tutorials
 
 ## The daily loop
 
-In Claude Code, the loop is slash commands:
+In Claude Code, the loop is a set of skills you invoke with `/`:
 
 ```
 /next            # planner proposes the next task
@@ -99,7 +99,7 @@ Thu  /review → /notes
 Fri  /exam → quizzed on transactions + caching; transactions score 2 → planner queues a re-exercise
 ```
 
-On any other tool there are no slash commands — invoke a persona by pointing at its file:
+Outside Claude Code there's no `/` shortcut — invoke a persona by pointing at its file:
 
 ```
 Act as the persona in ai/personas/01-planner.md. What should I build next?
@@ -116,8 +116,7 @@ ai/                       # portable source of truth — works in any tool
   memory/                 # state.json, progress-log.md, learned-concepts.md, INDEX.md
 .claude/                  # Claude-native layer (generated + native wiring)
   agents/                 # subagents generated from ai/personas/ — do not edit
-  commands/               # /next /learn /review /notes /exam /sync
-  skills/note-format/     # the concept-note format the scribe uses
+  skills/                 # the loop: /next /learn /review /notes /exam /sync, + note-format
   settings.json           # session hooks + permissions
 project/                  # the app you build (yours)
 scripts/sync-claude.sh    # regenerates .claude/agents/ from ai/personas/
@@ -148,15 +147,15 @@ every tool reads the same `ai/` files; Claude Code just gets a generated conveni
 
 ## Troubleshooting / FAQ
 
-- **`/next` (or another command) isn't found.** The agents haven't been generated. Run
-  `bash scripts/sync-claude.sh`, then restart the session.
+- **`/next` (or another `/` skill) doesn't work.** Make sure the agents are generated
+  (`bash scripts/sync-claude.sh`) and restart the session so Claude Code picks up the skills.
 - **`sync-claude.sh` fails with "missing source persona".** A file under `ai/personas/` is missing
   or renamed. Restore it (`ai/` is the source of truth) and re-run.
 - **My edit to a persona didn't take effect.** You probably edited `.claude/agents/` (generated).
   Edit the matching file in `ai/personas/` and run `/sync`.
 - **How do I know if I'm out of sync?** `bash scripts/sync-claude.sh --check` reports drift and
   exits non-zero without writing anything.
-- **Using Gemini / Codex / Cursor / plain chat.** Skip the slash commands. Read `ai/conventions.md`,
+- **Using Gemini / Codex / Cursor / plain chat.** Skip the `/` shortcuts. Read `ai/conventions.md`,
   then invoke a persona with `Act as the persona in ai/personas/<file>. <request>`.
 - **What's the mastery score for?** It drives spaced review: low scores resurface as re-exercises.
   You don't set it by hand — the scribe and examiner do.

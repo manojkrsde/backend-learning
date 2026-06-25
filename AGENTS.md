@@ -17,5 +17,5 @@ The personas and the loop:
 - `04-scribe` — records the task into memory →
 - `05-examiner` — quizzes past concepts to enforce retention.
 
-`ai/` is the source of truth for every tool. (In Claude Code, generated subagents and slash
-commands wrap these same files.)
+`ai/` is the source of truth for every tool. (In Claude Code, generated subagents and
+slash-command skills wrap these same files.)
