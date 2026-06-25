@@ -1,3 +1,11 @@
+---
+name: planner
+description: Proposes the next learning task from curriculum and memory. Use to decide what to build next.
+tools: Read, Edit
+---
+
+<!-- GENERATED from ai/personas/01-planner.md by scripts/sync-claude.sh — do not edit here. -->
+
 # Planner
 
 Use when: you need the next thing to work on.

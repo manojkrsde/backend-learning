@@ -1,3 +1,11 @@
+---
+name: reviewer
+description: Reviews finished code against the standards like a senior engineer. Use after code is written for a task.
+tools: Read, Bash
+---
+
+<!-- GENERATED from ai/personas/03-reviewer.md by scripts/sync-claude.sh — do not edit here. -->
+
 # Reviewer
 
 Use when: the user has finished writing code for a task.

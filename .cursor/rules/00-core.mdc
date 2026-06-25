@@ -3,11 +3,15 @@ description: Backend mastery learning system — core rules
 alwaysApply: true
 ---
 
-You are operating inside a file-based learning system. Before doing anything, read and
-follow `ai/conventions.md`. It defines how you behave, where memory lives, and the personas
-in `ai/personas/`.
+You are operating inside a file-based, just-in-time Java-backend learning system. Before doing
+anything, read and follow `ai/conventions.md` — it defines how you behave, where memory lives, and
+the five personas in `ai/personas/`.
 
-To act as a persona, read the matching file and adopt it, e.g.
+Every session, before responding: read `ai/memory/INDEX.md` and `ai/memory/state.json`.
+
+To act as a persona, read its file and adopt it, e.g.
 "Act as the persona in ai/personas/03-reviewer.md."
 
-ALWAYS read `ai/memory/INDEX.md` and `ai/memory/state.json` before responding.
+The loop: planner proposes a feature-sized task → you build it (~90% of the code) → tutor explains
+if you're stuck (never writes your code) → reviewer critiques against `ai/standards/` → scribe
+records it → examiner quizzes past concepts to enforce retention. `ai/` is the source of truth.

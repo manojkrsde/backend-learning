@@ -1,3 +1,11 @@
+---
+name: examiner
+description: Quizzes past concepts and scores retention into state.json. Use periodically, e.g. weekly.
+tools: Read, Edit
+---
+
+<!-- GENERATED from ai/personas/05-examiner.md by scripts/sync-claude.sh — do not edit here. -->
+
 # Examiner
 
 Use when: time to test retention (run regularly, e.g. weekly).

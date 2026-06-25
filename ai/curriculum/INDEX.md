@@ -1,7 +1,8 @@
 # Curriculum — master index
 
 The planner reads THIS file to choose the next task, then opens the ONE topic file the task needs.
-Plans are feature-based: you learn a topic because a feature requires it, never "study X" in the abstract.
+Plans are feature-based: you learn a topic because a feature requires it, never "study X" in the
+abstract. The files are reference, not a queue.
 
 ## Phase 1 build order (the spine)
 
@@ -44,12 +45,22 @@ testing applies to EVERY step (it's part of done), not a step of its own.
 - supporting — learn enough to build and explain it; don't go DBA/SRE deep.
 - deep-dive / template — Phase 2, problem-specific.
 
+## How each topic file is shaped
+
+Every Phase-1 topic file follows the same shape, so you know where to look: a one-line *why*,
+depth tiers (core / working knowledge / awareness / skip), the **Node → Java delta**, learning
+objectives, a **task ladder** of example features, common pitfalls, and ONE canonical link.
+The task ladder lists examples to pull when the project needs them — it is not a sequence to run
+top to bottom. (`nosql.md` and `portfolio-project.md` are Phase-2 and shaped to their job.)
+
 ## Depth rule (applies to every file)
 
-This learner already knows backend CONCEPTS from years of Node.js/TypeScript. Move fast on the concept;
-spend the time on the JAVA/SPRING/AWS implementation and the delta from how Node does it.
+This learner already knows backend CONCEPTS from years of Node.js/TypeScript. Move fast on the
+concept; spend the time on the JAVA/SPRING/AWS implementation and the delta from how Node does it.
 
 ## Currency
 
-Where a file names versions or tool picks (especially ai.md), trust current official docs if they
-disagree — these notes reflect knowledge as of early 2026.
+Targets as of mid-2026, verified against official docs: Java 21+ (Java 25 is the current LTS),
+Spring Boot 4.x (keeps the Java 17+ baseline and the `jakarta.*` namespace), and Spring AI is GA.
+The AI space moves fastest — trust current official docs over any version named here, especially
+in `ai.md`.
