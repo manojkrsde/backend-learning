@@ -119,6 +119,7 @@ ai/                       # portable source of truth — works in any tool
   skills/                 # the loop: /next /learn /review /notes /exam /sync, + note-format
   settings.json           # session hooks + permissions
 project/                  # the app you build (yours)
+dashboard/                # local Next.js UI for your progress (read-only view of ai/memory)
 scripts/sync-claude.sh    # regenerates .claude/agents/ from ai/personas/
 CLAUDE.md · AGENTS.md · GEMINI.md · .cursor/rules/   # per-tool entrypoints, all pointing at ai/
 ```
@@ -134,6 +135,21 @@ bash scripts/sync-claude.sh
 
 (or `/sync` inside Claude Code). Confirm it worked: `bash scripts/sync-claude.sh --check` should
 report all agents in sync, and `.claude/agents/` should contain five files.
+
+## Dashboard (optional local UI)
+
+A read-only Next.js dashboard visualizes your learning state — current task, mastery scores,
+progress timeline, concept notes, and the curriculum map. It reads the live files under
+`ai/memory/` and `ai/curriculum/` at request time (no database, no build step on the data), so it
+always reflects the latest state.
+
+```
+cd dashboard && npm install   # first time only
+cd dashboard && npm run dev    # starts the UI at http://localhost:3000
+```
+
+It only ever **reads** `ai/` — it never writes back. Lives entirely in `dashboard/` and is safe to
+ignore if you work purely from the CLI.
 
 ## Source of truth → sync
 
