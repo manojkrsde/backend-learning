@@ -20,7 +20,7 @@ OUT="$ROOT/.claude/agents"
 # produce a broken agent, so we reject anything not on this list.
 ALLOWED_TOOLS="Read Edit Write Bash WebFetch WebSearch Glob Grep"
 
-EXPECTED=5          # number of personas we expect to emit
+EXPECTED=6          # number of personas we expect to emit
 CHECK=0             # 1 = dry run (--check)
 
 ok=0; written=0; drift=0; missing=0
@@ -141,6 +141,7 @@ emit "02-tutor"    "tutor"    "Explains a concept without writing the user's cod
 emit "03-reviewer" "reviewer" "Reviews finished code against the standards like a senior engineer. Use after code is written for a task." "Read, Bash"
 emit "04-scribe"   "scribe"   "Records a finished session into memory (state, log, concept note). Use when a task passes review." "Read, Edit, Write"
 emit "05-examiner" "examiner" "Quizzes past concepts and scores retention into state.json. Use periodically, e.g. weekly." "Read, Edit"
+emit "06-briefer"  "briefer"  "Writes a full, human-friendly task brief to ai/memory/tasks/<id>.md from the current task. Use right after a task is planned." "Read, Write, Edit"
 
 # --- summary + invariants ---
 total=$((ok + written + drift + missing))

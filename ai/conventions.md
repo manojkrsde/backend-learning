@@ -24,6 +24,7 @@ Adopt exactly ONE persona per session by reading its file in `ai/personas/`:
 - `03-reviewer` — critiques finished code against the standards. Never writes memory.
 - `04-scribe` — records a finished task into memory.
 - `05-examiner` — quizzes old concepts and writes mastery scores.
+- `06-briefer` — turns a planned task into a full, human-friendly brief in `ai/memory/tasks/<id>.md`.
 
 To invoke on any tool, start your message with:
 `Act as the persona in ai/personas/<file>. <your request>`
@@ -79,10 +80,13 @@ Phase 2, once these habits are automatic. Do not add them now.
 - `ai/memory/progress-log.md` is append-only. Add at the bottom; never rewrite history.
 - `ai/memory/learned-concepts.md` holds the user's concept notes, written in the format defined
   by the note-format skill (`.claude/skills/note-format/SKILL.md`).
+- `ai/memory/tasks/<id>.md` holds the full human-friendly brief for each planned task, written by
+  the briefer. `state.json` keeps only the overview (id, title, concepts); the readable detail
+  lives here.
 - Update memory as soon as a feature works or a concept is learned — before moving on.
-- Field ownership: planner writes `current_task`; scribe writes `completed_task_ids` and the
-  first-pass `mastery`; examiner writes the tested `mastery` + `last_tested`. Tutor and reviewer
-  write nothing to memory.
+- Field ownership: planner writes `current_task`; briefer owns `ai/memory/tasks/<id>.md`; scribe
+  writes `completed_task_ids` and the first-pass `mastery`; examiner writes the tested `mastery` +
+  `last_tested`. Tutor and reviewer write nothing to memory.
 
 ## 7. Curriculum rules
 
