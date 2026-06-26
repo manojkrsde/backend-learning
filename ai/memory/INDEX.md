@@ -33,6 +33,10 @@ Mastery is 1–5; a score of 2 or below tells the planner to schedule a re-exerc
 
 (none yet — the scribe adds one line here, by Key, for each note it writes)
 
+## Task briefs
+
+- t-001 — Stand up the project and ship one vertical slice — create + get task endpoint (active)
+
 ## Completed work
 
 (none yet — see progress-log.md once tasks are done)

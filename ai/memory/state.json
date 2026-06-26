@@ -1,5 +1,16 @@
 {
-  "current_task": null,
+  "current_task": {
+    "id": "t-001",
+    "title": "Stand up the project and ship one vertical slice — create + get task endpoint",
+    "concepts": [
+      "java-records-dto",
+      "spring-di",
+      "spring-mvc-controller",
+      "spring-data-jpa",
+      "testcontainers-datajpatest",
+      "maven-build"
+    ]
+  },
   "completed_task_ids": [],
   "concepts": {}
 }
