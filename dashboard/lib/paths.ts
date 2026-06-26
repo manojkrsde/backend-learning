@@ -33,4 +33,6 @@ export const REPO_PATHS = {
   concepts: () =>
     path.join(findRepoRoot(), "ai", "memory", "learned-concepts.md"),
   curriculum: () => path.join(findRepoRoot(), "ai", "curriculum", "INDEX.md"),
+  taskBrief: (id: string) =>
+    path.join(findRepoRoot(), "ai", "memory", "tasks", `${id}.md`),
 };

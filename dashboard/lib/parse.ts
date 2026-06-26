@@ -4,6 +4,7 @@ import type {
   LearningState,
   ProgressEntry,
   Task,
+  TaskBrief,
 } from "./types";
 import { slugify } from "./utils";
 
@@ -222,4 +223,52 @@ export function parseCurriculum(markdown: string): CurriculumFile[] {
   }
 
   return rows;
+}
+
+// ---------------------------------------------------------------------------
+// task brief (ai/memory/tasks/<id>.md)
+// ---------------------------------------------------------------------------
+
+export function parseTaskBrief(id: string, markdown: string): TaskBrief | null {
+  if (!markdown.trim()) return null;
+
+  const lines = markdown.split(/\r?\n/);
+
+  // First line: "# t-001 — <title>"
+  const titleMatch = lines[0]?.match(/^#\s+(?:\S+\s*[—\-–:]\s*)?(.+)$/);
+  const title = titleMatch ? titleMatch[1].trim() : id;
+
+  // Metadata line: "**Status:** active · **Concepts:** ..."
+  let status: string | undefined;
+  let concepts: string[] = [];
+  for (const line of lines.slice(1, 6)) {
+    const statusMatch = line.match(/\*\*Status:\*\*\s*(\S+)/i);
+    if (statusMatch) status = statusMatch[1];
+    const conceptsMatch = line.match(
+      /\*\*Concepts:\*\*\s*(.+)/i,
+    );
+    if (conceptsMatch) {
+      concepts = conceptsMatch[1]
+        .split(/[,·]+/)
+        .map((s) => s.trim())
+        .filter(Boolean);
+    }
+  }
+
+  // Split into ## sections
+  const sectionMatches = [...markdown.matchAll(/^##\s+(.+?)\s*$/gm)];
+  const sections: { heading: string; body: string }[] = [];
+
+  for (let i = 0; i < sectionMatches.length; i++) {
+    const heading = sectionMatches[i][1].trim();
+    const start = sectionMatches[i].index! + sectionMatches[i][0].length;
+    const end =
+      i + 1 < sectionMatches.length
+        ? sectionMatches[i + 1].index!
+        : markdown.length;
+    const body = markdown.slice(start, end).trim();
+    if (body) sections.push({ heading, body });
+  }
+
+  return { id, title, status, concepts, sections, raw: markdown };
 }

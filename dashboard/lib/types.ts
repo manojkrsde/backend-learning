@@ -42,6 +42,15 @@ export interface ConceptNote {
   body: string; // the full markdown of the section (without the heading)
 }
 
+export interface TaskBrief {
+  id: string;
+  title: string;
+  status?: string;
+  concepts: string[];
+  sections: { heading: string; body: string }[];
+  raw: string;
+}
+
 export interface CurriculumFile {
   file: string; // e.g. "spring-boot.md"
   slug: string; // e.g. "spring-boot"

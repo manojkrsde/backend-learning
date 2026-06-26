@@ -5,6 +5,7 @@ import {
   parseCurriculum,
   parseProgress,
   parseState,
+  parseTaskBrief,
 } from "./parse";
 
 function readFileSafe(file: string): string {
@@ -54,4 +55,9 @@ export function getCurriculumRaw(): string {
 
 export function getCurriculum() {
   return parseCurriculum(getCurriculumRaw());
+}
+
+export function getTaskBrief(id: string) {
+  const file = REPO_PATHS.taskBrief(id);
+  return parseTaskBrief(id, readFileSafe(file));
 }

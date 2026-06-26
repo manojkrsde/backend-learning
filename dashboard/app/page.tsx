@@ -9,7 +9,8 @@ import { ConceptPill } from "@/components/concept-pill";
 import { MasteryGrid } from "@/components/mastery-grid";
 import { Timeline } from "@/components/timeline";
 import { EmptyState } from "@/components/empty-state";
-import { getProgress, getState } from "@/lib/data";
+import { TaskBriefPanel } from "@/components/task-brief-panel";
+import { getProgress, getState, getTaskBrief } from "@/lib/data";
 import type { Task } from "@/lib/types";
 
 export const revalidate = 0;
@@ -40,6 +41,7 @@ export default function HomePage() {
   const recent = getProgress().slice(-5).reverse();
   const current = state.current_task;
   const next = state.next_task;
+  const brief = current?.id ? getTaskBrief(current.id) : null;
 
   return (
     <div className="space-y-8">
@@ -104,6 +106,9 @@ export default function HomePage() {
                       ))}
                     </div>
                   </div>
+                ) : null}
+                {brief && brief.sections.length > 0 ? (
+                  <TaskBriefPanel sections={brief.sections} />
                 ) : null}
               </>
             ) : (

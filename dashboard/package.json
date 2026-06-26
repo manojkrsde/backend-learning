@@ -4,6 +4,7 @@
   "private": true,
   "description": "Local dashboard for the AI-powered backend learning system in this repo.",
   "scripts": {
+    "predev": "rm -rf .next",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

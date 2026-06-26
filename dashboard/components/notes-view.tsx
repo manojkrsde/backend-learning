@@ -26,7 +26,10 @@ export function NotesView({ markdown }: { markdown: string }) {
     });
   }, [markdown]);
 
-  const hasContent = toc.length > 0 || /\S/.test(markdown.replace(/^#.*$/gm, ""));
+  // Concept notes are always written as `## <name>` sections. If the TOC
+  // (derived from ## headings) is empty, the file contains only boilerplate —
+  // show the empty state instead of rendering the template text.
+  const hasContent = toc.length > 0;
 
   if (!markdown.trim() || !hasContent) {
     return (
